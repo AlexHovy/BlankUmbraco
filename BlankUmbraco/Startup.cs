@@ -1,3 +1,4 @@
+using BlankUmbraco.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -43,6 +44,7 @@ namespace BlankUmbraco
                 .AddBackOffice()
                 .AddWebsite()
                 .AddComposers()
+                .AddCustomServices()
                 .Build();
 #pragma warning restore IDE0022 // Use expression body for methods
 

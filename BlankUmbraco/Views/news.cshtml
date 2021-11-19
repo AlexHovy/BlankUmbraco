@@ -1,7 +1,23 @@
 ﻿@using BlankUmbraco.ViewModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<NewsViewModel>
-@{
-}
-<h1>@Model.Name</h1>
 
-<p>@Model.Test</p>
+@{
+    foreach (var item in Model.NewsItems)
+    {
+        var name = item.Name;
+        var summary = item.Summary;
+        var imageUrl = item.ImageUrl;
+
+        <h3>@name</h3>
+
+        if (!string.IsNullOrEmpty(summary))
+        {
+            <p>@summary</p>
+        }
+
+        if (!string.IsNullOrEmpty(imageUrl))
+        {
+            <img src="@imageUrl" alt="@name" />
+        }
+    }
+}

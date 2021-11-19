@@ -23,7 +23,6 @@ namespace BlankUmbraco
 
         public override IActionResult Index()
         {
-
             // you are in control here!
             // create our ViewModel based on the PublishedContent of the current request:
             // set our custom properties
@@ -32,10 +31,8 @@ namespace BlankUmbraco
                 Test = "Hello World"
             };
 
-
             // return our custom ViewModel
             return CurrentTemplate(homeModel);
-
         }
     }
 }

@@ -14,7 +14,7 @@ namespace BlankUmbraco.ViewModels
             var items = content.Children.Where(q => q.ContentType.Alias == "newsItem").ToList();
             foreach (var item in items)
             {
-                var imageProp = item.GetProperty("Image").GetValue() as MediaWithCrops;
+                var imageProp = item.GetProperty("image").GetValue() as MediaWithCrops;
                 
                 var newsItem = new NewsItem
                 {

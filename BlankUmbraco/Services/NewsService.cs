@@ -10,9 +10,7 @@ namespace BlankUmbraco.Services
 {
     public class NewsService : INewsService
     {
-        // TODO: Find alias, id can change if content deleted
-        const int ContentId = 1060;
-        private IPublishedContent Content => _content.GetById(ContentId);
+        private IPublishedContent Content => _content.GetByAlias("news");
 
         private readonly IUmbracoContent _content;
 

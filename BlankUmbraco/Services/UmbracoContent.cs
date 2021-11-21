@@ -20,5 +20,10 @@ namespace BlankUmbraco.Services
         {
             return Content.GetById(id);
         }
+
+        public IPublishedContent GetByAlias(string alias)
+        {
+            return Content.GetSingleByXPath("//" + alias);
+        }
     }
 }

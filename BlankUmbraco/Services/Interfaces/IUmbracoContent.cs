@@ -5,5 +5,6 @@ namespace BlankUmbraco.Services.Interfaces
     public interface IUmbracoContent
     {
         IPublishedContent GetById(int id);
+        IPublishedContent GetByAlias(string alias);
     }
 }

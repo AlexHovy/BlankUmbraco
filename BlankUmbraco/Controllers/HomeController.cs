@@ -35,10 +35,9 @@ namespace BlankUmbraco
             // you are in control here!
             // create our ViewModel based on the PublishedContent of the current request:
             // set our custom properties
-            var homeViewModel = new HomeViewModel(CurrentPage, new PublishedValueFallback(_serviceContext, _variationContextAccessor))
-            {
-                Test = "Hello World"
-            };
+            var homeViewModel = new HomeViewModel(CurrentPage,
+                new PublishedValueFallback(_serviceContext, _variationContextAccessor),
+                _newsService);
 
             var newsItems = _newsService.GetNewsItems();
 

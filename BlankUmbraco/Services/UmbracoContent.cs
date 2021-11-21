@@ -9,7 +9,7 @@ namespace BlankUmbraco.Services
     {
         private IPublishedContentCache Content => _umbracoContextFactory.EnsureUmbracoContext().UmbracoContext.Content;
 
-        private IUmbracoContextFactory _umbracoContextFactory { get; set; }
+        private readonly IUmbracoContextFactory _umbracoContextFactory;
 
         public UmbracoContent(IUmbracoContextFactory umbracoContextFactory)
         {

@@ -5,6 +5,6 @@ namespace BlankUmbraco.Services.Interfaces
 {
     public interface INewsService
     {
-        List<NewsItem> GetNewsItems();
+        ICollection<NewsItem> GetNewsItems();
     }
 }

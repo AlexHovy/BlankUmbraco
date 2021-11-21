@@ -10,17 +10,18 @@ namespace BlankUmbraco.Services
 {
     public class NewsService : INewsService
     {
+        // TODO: Find alias, id can change if content deleted
         const int ContentId = 1060;
         private IPublishedContent Content => _content.GetById(ContentId);
 
-        private IUmbracoContent _content { get; set; }
+        private readonly IUmbracoContent _content;
 
         public NewsService(IUmbracoContent content)
         {
             _content = content;
         }
 
-        public List<NewsItem> GetNewsItems()
+        public ICollection<NewsItem> GetNewsItems()
         {
             var newsItems = new List<NewsItem>();
 

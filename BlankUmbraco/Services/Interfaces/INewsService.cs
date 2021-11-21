@@ -1,6 +1,10 @@
-﻿namespace BlankUmbraco.Services.Interfaces
+﻿using BlankUmbraco.Entities;
+using System.Collections.Generic;
+
+namespace BlankUmbraco.Services.Interfaces
 {
     public interface INewsService
     {
+        List<NewsItem> GetNewsItems();
     }
 }

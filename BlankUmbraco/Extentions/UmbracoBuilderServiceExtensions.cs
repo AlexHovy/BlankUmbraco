@@ -9,7 +9,8 @@ namespace BlankUmbraco.Extensions
     {
         public static IUmbracoBuilder AddCustomServices(this IUmbracoBuilder builder)
         {
-            //builder.Services.AddScoped<INewsService, NewsService>();
+            builder.Services.AddScoped<IUmbracoContent, UmbracoContent>();
+            builder.Services.AddScoped<INewsService, NewsService>();
 
             return builder;
         }

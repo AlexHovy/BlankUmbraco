@@ -7,6 +7,7 @@ using Umbraco.Cms.Core.Services;
 using Umbraco.Cms.Core.Web;
 using Umbraco.Cms.Web.Common.Controllers;
 using BlankUmbraco.ViewModels;
+using BlankUmbraco.Services.Interfaces;
 
 namespace BlankUmbraco
 {
@@ -14,11 +15,19 @@ namespace BlankUmbraco
     {
         private readonly IVariationContextAccessor _variationContextAccessor;
         private readonly ServiceContext _serviceContext;
-        public NewsController(ILogger<NewsController> logger, ICompositeViewEngine compositeViewEngine, IUmbracoContextAccessor umbracoContextAccessor, IVariationContextAccessor variationContextAccessor, ServiceContext context)
+        public readonly INewsService _newsService;
+
+        public NewsController(ILogger<NewsController> logger,
+            ICompositeViewEngine compositeViewEngine,
+            IUmbracoContextAccessor umbracoContextAccessor,
+            IVariationContextAccessor variationContextAccessor,
+            ServiceContext context,
+            INewsService newsService)
             : base(logger, compositeViewEngine, umbracoContextAccessor)
         {
             _variationContextAccessor = variationContextAccessor;
             _serviceContext = context;
+            _newsService = newsService;
         }
 
         public override IActionResult Index()

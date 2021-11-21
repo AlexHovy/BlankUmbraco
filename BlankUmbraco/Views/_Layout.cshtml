@@ -5,8 +5,22 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 
 @{
-    string siteName = Model.GetProperty("siteName").GetValue() as string;
-    string siteLogo = (Model.GetProperty("siteLogo").GetValue() as MediaWithCrops).LocalCrops.Src;
+    string siteLogo = (Model.Root().GetProperty("siteLogo")?.GetValue() as MediaWithCrops)?.LocalCrops.Src;
+}
+
+@section SiteLogo {
+    <div class="logo">
+        @if (!string.IsNullOrEmpty(siteLogo))
+        {
+            <div class="nav-link--home">
+                <img class="logo-image" src="@siteLogo" alt="@Model.Name">
+            </div>
+        }
+        else
+        {
+            <a class="nav-link nav-link--home nav-link--home__text logo-text" href="/">@Model.Name</a>
+        }
+    </div>
 }
 
 <!doctype html>
@@ -36,15 +50,15 @@
             @if (!string.IsNullOrEmpty(siteLogo))
             {
                 <div class="nav-link--home">
-                    <img class="logo-image" src="@siteLogo" alt="@siteName">
+                    <img class="logo-image" src="@siteLogo" alt="@Model.Name">
                 </div>
             }
             else
             {
-                <a class="nav-link nav-link--home nav-link--home__text logo-text" href="/">@siteName</a>
+                <a class="nav-link nav-link--home nav-link--home__text logo-text" href="/">@Model.Name</a>
             }
         </div>
-
+        
         @*<nav class="nav-bar top-nav">
             @await Html.PartialAsync("~/Views/Partials/Navigation/TopNavigation.cshtml")
         </nav>

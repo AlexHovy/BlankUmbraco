@@ -1,5 +1,6 @@
 ﻿using BlankUmbraco.Entities;
 using BlankUmbraco.Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Umbraco.Cms.Core.Models;
@@ -23,21 +24,30 @@ namespace BlankUmbraco.Services
         {
             var newsItems = new List<NewsItem>();
 
-            var items = Content.Children.Where(q => q.ContentType.Alias == "newsItem").ToList();
-            foreach (var item in items)
+            try
             {
-                var imageProp = item.GetProperty("image").GetValue() as MediaWithCrops;
-
-                var newsItem = new NewsItem
+                var items = Content.Children.Where(q => q.ContentType.Alias == "newsItem").ToList();
+                foreach (var item in items)
                 {
-                    Name = item.Name,
-                    Summary = item.GetProperty("summary").GetValue() as string,
-                    Body = item.GetProperty("body").GetValue() as string,
-                    ImageUrl = imageProp.LocalCrops.Src,
-                    UpdatedOn = item.UpdateDate,
-                    CreatedOn = item.CreateDate
-                };
-                newsItems.Add(newsItem);
+                    var imageProp = item.GetProperty("image")?.GetValue() as MediaWithCrops;
+
+                    var newsItem = new NewsItem
+                    {
+                        Name = item.Name,
+                        Url = string.Concat(item.Parent.UrlSegment, "/", item.UrlSegment),
+                        Summary = item.GetProperty("summary")?.GetValue() as string,
+                        Body = item.GetProperty("body")?.GetValue() as string,
+                        ImageUrl = imageProp?.LocalCrops.Src,
+                        UpdatedOn = item.UpdateDate,
+                        CreatedOn = item.CreateDate
+                    };
+                    newsItems.Add(newsItem);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
             }
 
             return newsItems;

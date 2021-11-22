@@ -4,25 +4,6 @@
 @using BlankUmbraco.ViewModels
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 
-@{
-    string siteLogo = (Model.Root().GetProperty("siteLogo")?.GetValue() as MediaWithCrops)?.LocalCrops.Src;
-}
-
-@section SiteLogo {
-    <div class="logo">
-        @if (!string.IsNullOrEmpty(siteLogo))
-        {
-            <div class="nav-link--home">
-                <img class="logo-image" src="@siteLogo" alt="@Model.Name">
-            </div>
-        }
-        else
-        {
-            <a class="nav-link nav-link--home nav-link--home__text logo-text" href="/">@Model.Name</a>
-        }
-    </div>
-}
-
 <!doctype html>
 <html>
 <head>
@@ -46,17 +27,10 @@
     </div>*@
 
     <header class="header">
-        <div class="logo">
-            @if (!string.IsNullOrEmpty(siteLogo))
-            {
-                <div class="nav-link--home">
-                    <img class="logo-image" src="@siteLogo" alt="@Model.Name">
-                </div>
-            }
-            else
-            {
-                <a class="nav-link nav-link--home nav-link--home__text logo-text" href="/">@Model.Name</a>
-            }
+        <div class="row">
+            <div class="col">
+                @await Html.PartialAsync("SiteLogo", Model)
+            </div>
         </div>
         
         @*<nav class="nav-bar top-nav">
@@ -76,12 +50,17 @@
     </main>
 
     <footer class="section--themed">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 ta-center">
-                    footer
-                    @*@home.FooterAddress*@
-                </div>
+        <div class="row">
+            <div class="col-md-12 ta-center">
+                @await Html.PartialAsync("SiteLogo", Model)
+            </div>
+        </div>
+        <div class="row footer-dark-strip">
+            <div class="col">
+                Website Privacy Notice Electronic Communications Act Promotion of Access to Information Act Manual
+            </div>
+            <div class="col">
+                Copyright &copy;. Life Healthcare. All rights reserved.
             </div>
         </div>
     </footer>

@@ -8,3 +8,7 @@
 .read-more-link {
     color: red;
 }
+.footer-dark-strip {
+    background-color: rgb(9, 50, 84);
+    color: white;
+}

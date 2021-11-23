@@ -2,24 +2,28 @@
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<NewsViewModel>
 
-@{
-    var items = Model.NewsItems;
-    foreach (var item in items)
-    {
-        var name = item.Name;
-        var summary = item.Summary;
-        var imageUrl = item.ImageUrl;
-
-        <h3>@name</h3>
-
-        if (!string.IsNullOrEmpty(summary))
-        {
-            <p>@summary</p>
-        }
-
-        if (!string.IsNullOrEmpty(imageUrl))
-        {
-            <img src="@imageUrl" alt="@name" />
-        }
-    }
-}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card-group">
+                @foreach (var item in Model.NewsItems)
+                {
+                    <div class="card" style="width: 18rem;">
+                        @if (!string.IsNullOrEmpty(item.ImageUrl))
+                        {
+                            <img class="card-img-top" src="@item.ImageUrl" alt="Card image cap">
+                        }
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Name</h5>
+                            @if (!string.IsNullOrEmpty(item.Summary))
+                            {
+                                <p class="card-text">@item.Summary</p>
+                            }
+                            <a href="@item.Url" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

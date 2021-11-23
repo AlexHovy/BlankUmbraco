@@ -1,6 +1,32 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+﻿@using BlankUmbraco.ViewModels;
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.NewsItem>
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<NewsItemViewModel>
 
 @{
 }
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <img src="@Model.NewsItem.ImageUrl" />
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col">
+            <h1><strong>@Model.NewsItem.Name</strong></h1>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col">
+            <h5><i>@Model.NewsItem.Summary</i></h5>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col">
+            <p>@Html.Raw(Model.NewsItem.Body)</p>
+        </div>
+    </div>
+</div>

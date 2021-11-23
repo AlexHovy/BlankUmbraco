@@ -5,10 +5,21 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+
 .read-more-link {
     color: red;
 }
+
 .footer-dark-strip {
     background-color: rgb(9, 50, 84);
     color: white;
+}
+
+.carousel .carousel-caption p,
+.card .card-text {
+    height: 100px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
 }

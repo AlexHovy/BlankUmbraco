@@ -11,13 +11,13 @@ using BlankUmbraco.Services.Interfaces;
 
 namespace BlankUmbraco
 {
-    public class HomeController : RenderController
+    public class NewsItemController : RenderController
     {
         private readonly IVariationContextAccessor _variationContextAccessor;
         private readonly ServiceContext _serviceContext;
         public readonly INewsService _newsService;
 
-        public HomeController(ILogger<HomeController> logger,
+        public NewsItemController(ILogger<NewsItemController> logger,
             ICompositeViewEngine compositeViewEngine,
             IUmbracoContextAccessor umbracoContextAccessor,
             IVariationContextAccessor variationContextAccessor,
@@ -35,12 +35,12 @@ namespace BlankUmbraco
             // you are in control here!
             // create our ViewModel based on the PublishedContent of the current request:
             // set our custom properties
-            var homeViewModel = new HomeViewModel(CurrentPage,
+            var newsViewModel = new NewsItemViewModel(CurrentPage,
                 new PublishedValueFallback(_serviceContext, _variationContextAccessor),
                 _newsService);
 
             // return our custom ViewModel
-            return CurrentTemplate(homeViewModel);
+            return CurrentTemplate(newsViewModel);
         }
     }
 }

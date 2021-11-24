@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.Models.PublishedContent;
 using Umbraco.Cms.Core.Web;
+using Umbraco.Extensions;
 
 namespace BlankUmbraco.Services
 {
@@ -33,7 +34,7 @@ namespace BlankUmbraco.Services
                     var newsItem = new NewsItem
                     {
                         Name = item.Name,
-                        Url = item.UrlSegment,
+                        Url = item.Url(),
                         Summary = item.GetProperty("summary")?.GetValue().ToString(),
                         Body = item.GetProperty("body")?.GetValue().ToString(),
                         ImageUrl = imageUrl,
@@ -67,7 +68,7 @@ namespace BlankUmbraco.Services
                     var newsItem = new NewsItem
                     {
                         Name = item.Name,
-                        Url = item.UrlSegment,
+                        Url = item.Url(),
                         Summary = item.GetProperty("summary")?.GetValue().ToString(),
                         Body = item.GetProperty("body")?.GetValue().ToString(),
                         ImageUrl = imageUrl,

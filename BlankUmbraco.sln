@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlankUmbraco", "BlankUmbraco\BlankUmbraco.csproj", "{3AA2410B-9E22-4A33-A7A0-3AAC453BE715}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlankUmbraco", "BlankUmbraco\BlankUmbraco.csproj", "{3AA2410B-9E22-4A33-A7A0-3AAC453BE715}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DB", "DB", "{E265AABB-B706-4357-A9A1-6706E8198911}"
+	ProjectSection(SolutionItems) = preProject
+		DB\BlankUmbraco.bak = DB\BlankUmbraco.bak
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

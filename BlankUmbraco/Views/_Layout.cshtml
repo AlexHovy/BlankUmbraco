@@ -27,9 +27,17 @@
     </div>*@
 
     <header class="header">
-        <div class="row">
-            <div class="col">
-                @await Html.PartialAsync("SiteLogo", Model)
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    @await Html.PartialAsync("SiteLogo", Model)
+                </div>
+                <div class="col">
+                    @foreach (var child in Model.Root().Children)
+                    {
+                        <a href="@child.Url()">@child.Name</a>
+                    }
+                </div>
             </div>
         </div>
         
@@ -50,17 +58,19 @@
     </main>
 
     <footer class="section--themed">
-        <div class="row">
-            <div class="col-md-12 ta-center">
-                @await Html.PartialAsync("SiteLogo", Model)
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 ta-center">
+                    @await Html.PartialAsync("SiteLogo", Model)
+                </div>
             </div>
-        </div>
-        <div class="row footer-dark-strip">
-            <div class="col">
-                Website Privacy Notice Electronic Communications Act Promotion of Access to Information Act Manual
-            </div>
-            <div class="col">
-                Copyright &copy;. Life Healthcare. All rights reserved.
+            <div class="row footer-dark-strip">
+                <div class="col">
+                    Website Privacy Notice Electronic Communications Act Promotion of Access to Information Act Manual
+                </div>
+                <div class="col">
+                    Copyright &copy;. Life Healthcare. All rights reserved.
+                </div>
             </div>
         </div>
     </footer>

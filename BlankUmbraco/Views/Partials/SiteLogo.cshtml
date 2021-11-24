@@ -9,9 +9,9 @@
 <div class="logo">
     @if (!string.IsNullOrEmpty(siteLogo))
     {
-        <div class="nav-link--home">
+        <a class="nav-link nav-link--home nav-link--home__text logo-text" href="/">
             <img class="logo-image" src="@siteLogo" alt="@Model.Name">
-        </div>
+        </a>
     }
     else
     {
